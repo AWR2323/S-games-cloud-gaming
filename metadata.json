@@ -1,0 +1,7 @@
+{
+  "name": "S games",
+  "description": "S games - 2608moon / Cloudmoon 日本語版クラウドゲーミングプラットフォーム、フレンド検索・申請・一覧機能、リアルタイム全体ラウンジ＆フレンドDMチャット、だいずべあスタンプ・グルーヴメッセージ、実績コレクション & InPlayプレイヤー",
+  "requestFramePermissions": ["camera", "microphone", "geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

@@ -1,0 +1,514 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile authenticated with Google, Apple, or SNS Firebase Auth",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Firebase Auth User ID"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "User display name"
+        },
+        "gamerTag": {
+          "type": "string",
+          "description": "Custom gamer handle or username"
+        },
+        "email": {
+          "type": "string",
+          "description": "User email address"
+        },
+        "photoURL": {
+          "type": "string",
+          "description": "User avatar photo URL"
+        },
+        "provider": {
+          "type": "string",
+          "description": "Auth provider (google.com, apple.com, twitter.com, github.com, guest)"
+        },
+        "level": {
+          "type": "number",
+          "description": "Player level based on activity and games played"
+        },
+        "xp": {
+          "type": "number",
+          "description": "Player experience points"
+        },
+        "bio": {
+          "type": "string",
+          "description": "Short gamer bio or motto"
+        },
+        "unlockedAchievements": {
+          "type": "array",
+          "description": "List of unlocked achievement badge IDs",
+          "items": {
+            "type": "string"
+          }
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp of user creation"
+        }
+      },
+      "required": ["uid", "displayName", "createdAt"]
+    },
+    "Game": {
+      "title": "Game",
+      "description": "S AI generated playable game created via Gemini API",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique game ID"
+        },
+        "title": {
+          "type": "string",
+          "description": "Game title"
+        },
+        "description": {
+          "type": "string",
+          "description": "Short description and gameplay instructions"
+        },
+        "genre": {
+          "type": "string",
+          "description": "Game genre (e.g. Action, Puzzle, Arcade, Retro, Shooter)"
+        },
+        "prompt": {
+          "type": "string",
+          "description": "Original user prompt that generated the game"
+        },
+        "code": {
+          "type": "string",
+          "description": "Self-contained HTML5 and JavaScript playable game code"
+        },
+        "creatorUid": {
+          "type": "string",
+          "description": "UID of the creator"
+        },
+        "creatorName": {
+          "type": "string",
+          "description": "Display name of the creator"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp of game creation"
+        },
+        "likesCount": {
+          "type": "number",
+          "description": "Count of likes received"
+        },
+        "playsCount": {
+          "type": "number",
+          "description": "Total times played by users"
+        },
+        "commentsCount": {
+          "type": "number",
+          "description": "Total comments posted on this game"
+        }
+      },
+      "required": ["id", "title", "description", "genre", "code", "creatorUid", "createdAt"]
+    },
+    "Comment": {
+      "title": "Comment",
+      "description": "User comment or gameplay review on an S AI game",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Comment ID"
+        },
+        "gameId": {
+          "type": "string",
+          "description": "Associated game ID"
+        },
+        "userId": {
+          "type": "string",
+          "description": "UID of commenter or 'guest'"
+        },
+        "userName": {
+          "type": "string",
+          "description": "Display name of commenter"
+        },
+        "userPhoto": {
+          "type": "string",
+          "description": "Avatar URL of commenter"
+        },
+        "text": {
+          "type": "string",
+          "description": "Comment content (max 1000 characters)"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp of comment"
+        }
+      },
+      "required": ["id", "gameId", "userName", "text", "createdAt"]
+    },
+    "Favorite": {
+      "title": "Favorite",
+      "description": "User bookmarked or favorited game",
+      "type": "object",
+      "properties": {
+        "gameId": {
+          "type": "string",
+          "description": "Referenced game ID"
+        },
+        "gameTitle": {
+          "type": "string",
+          "description": "Title of the saved game"
+        },
+        "addedAt": {
+          "type": "string",
+          "description": "ISO timestamp when added"
+        }
+      },
+      "required": ["gameId", "gameTitle", "addedAt"]
+    },
+    "PlayHistory": {
+      "title": "PlayHistory",
+      "description": "Log of cloud and S AI games played by the user with session telemetry",
+      "type": "object",
+      "properties": {
+        "gameId": {
+          "type": "string",
+          "description": "Package name or unique ID of the game"
+        },
+        "gameTitle": {
+          "type": "string",
+          "description": "Title of the played game"
+        },
+        "gameIcon": {
+          "type": "string",
+          "description": "Game icon URL"
+        },
+        "playCount": {
+          "type": "number",
+          "description": "Times launched"
+        },
+        "lastPlayedAt": {
+          "type": "string",
+          "description": "ISO timestamp of last play"
+        }
+      },
+      "required": ["gameId", "gameTitle", "lastPlayedAt"]
+    },
+    "Review": {
+      "title": "Review",
+      "description": "User star rating and game review",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Review ID"
+        },
+        "gameId": {
+          "type": "string",
+          "description": "Target game ID or package name"
+        },
+        "gameTitle": {
+          "type": "string",
+          "description": "Target game title"
+        },
+        "userId": {
+          "type": "string",
+          "description": "UID of reviewer"
+        },
+        "userName": {
+          "type": "string",
+          "description": "Display name of reviewer"
+        },
+        "rating": {
+          "type": "number",
+          "description": "Star rating from 1 to 5"
+        },
+        "reviewText": {
+          "type": "string",
+          "description": "Review commentary"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp"
+        }
+      },
+      "required": ["id", "gameId", "userId", "userName", "rating", "createdAt"]
+    },
+    "Friend": {
+      "title": "Friend",
+      "description": "User accepted friend item in user friends subcollection",
+      "type": "object",
+      "properties": {
+        "friendUid": {
+          "type": "string",
+          "description": "Firebase Auth UID of the friend"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Display name of the friend"
+        },
+        "gamerTag": {
+          "type": "string",
+          "description": "GamerTag of the friend"
+        },
+        "photoURL": {
+          "type": "string",
+          "description": "Avatar photo URL of friend"
+        },
+        "level": {
+          "type": "number",
+          "description": "Player level"
+        },
+        "status": {
+          "type": "string",
+          "description": "Current status (online, in-game, offline)"
+        },
+        "currentGame": {
+          "type": "string",
+          "description": "Game currently playing"
+        },
+        "addedAt": {
+          "type": "string",
+          "description": "ISO timestamp when added"
+        }
+      },
+      "required": ["friendUid", "displayName", "addedAt"]
+    },
+    "FriendRequest": {
+      "title": "FriendRequest",
+      "description": "Incoming or outgoing friend request",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Request ID formatted as fromUid_toUid"
+        },
+        "fromUid": {
+          "type": "string",
+          "description": "Sender user UID"
+        },
+        "fromName": {
+          "type": "string",
+          "description": "Sender display name"
+        },
+        "fromGamerTag": {
+          "type": "string",
+          "description": "Sender gamerTag"
+        },
+        "fromPhotoURL": {
+          "type": "string",
+          "description": "Sender avatar photo URL"
+        },
+        "toUid": {
+          "type": "string",
+          "description": "Recipient user UID"
+        },
+        "toName": {
+          "type": "string",
+          "description": "Recipient display name"
+        },
+        "status": {
+          "type": "string",
+          "description": "Request status (pending, accepted, rejected)"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp of request creation"
+        }
+      },
+      "required": ["id", "fromUid", "fromName", "toUid", "status", "createdAt"]
+    },
+    "LobbyMessage": {
+      "title": "LobbyMessage",
+      "description": "Public community lounge chat message",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Message ID"
+        },
+        "userId": {
+          "type": "string",
+          "description": "Sender UID or guest identifier"
+        },
+        "userName": {
+          "type": "string",
+          "description": "Sender display name"
+        },
+        "userGamerTag": {
+          "type": "string",
+          "description": "Sender gamerTag"
+        },
+        "userPhoto": {
+          "type": "string",
+          "description": "Sender avatar URL"
+        },
+        "text": {
+          "type": "string",
+          "description": "Message text content (up to 500 characters)"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp of message"
+        }
+      },
+      "required": ["id", "userId", "userName", "text", "createdAt"]
+    },
+    "DirectChat": {
+      "title": "DirectChat",
+      "description": "1-on-1 private chat thread between two friends",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Chat thread ID"
+        },
+        "participants": {
+          "type": "array",
+          "description": "Array of user UIDs participating in the chat"
+        },
+        "lastMessage": {
+          "type": "string",
+          "description": "Preview of last message sent"
+        },
+        "lastMessageTime": {
+          "type": "string",
+          "description": "Timestamp of last message"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "ISO timestamp of last update"
+        }
+      },
+      "required": ["id", "participants", "updatedAt"]
+    },
+    "DirectChatMessage": {
+      "title": "DirectChatMessage",
+      "description": "Message in 1-on-1 friend chat thread",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Message ID"
+        },
+        "chatId": {
+          "type": "string",
+          "description": "Parent chat thread ID"
+        },
+        "senderId": {
+          "type": "string",
+          "description": "UID of sender"
+        },
+        "senderName": {
+          "type": "string",
+          "description": "Display name of sender"
+        },
+        "senderPhoto": {
+          "type": "string",
+          "description": "Avatar URL of sender"
+        },
+        "text": {
+          "type": "string",
+          "description": "Message content (up to 1000 characters)"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp of message"
+        }
+      },
+      "required": ["id", "chatId", "senderId", "senderName", "text", "createdAt"]
+    },
+    "GroupChat": {
+      "title": "GroupChat",
+      "description": "Group chat room between multiple friends",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Group chat ID" },
+        "name": { "type": "string", "description": "Group title" },
+        "icon": { "type": "string", "description": "Group badge or emoji" },
+        "description": { "type": "string", "description": "Group purpose or topic" },
+        "createdBy": { "type": "string", "description": "UID of creator" },
+        "creatorName": { "type": "string", "description": "Display name of creator" },
+        "members": { "type": "array", "description": "Array of user UIDs" },
+        "memberNames": { "type": "object", "description": "UID to display name map" },
+        "memberPhotos": { "type": "object", "description": "UID to avatar photo map" },
+        "lastMessage": { "type": "string", "description": "Preview of last message sent" },
+        "lastMessageTime": { "type": "string", "description": "Timestamp of last message" },
+        "createdAt": { "type": "string", "description": "ISO timestamp of group creation" },
+        "updatedAt": { "type": "string", "description": "ISO timestamp of last update" }
+      },
+      "required": ["id", "name", "createdBy", "members", "createdAt", "updatedAt"]
+    },
+    "GroupChatMessage": {
+      "title": "GroupChatMessage",
+      "description": "Messages inside a group chat room",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Message ID" },
+        "groupId": { "type": "string", "description": "Parent group chat ID" },
+        "senderId": { "type": "string", "description": "UID of sender" },
+        "senderName": { "type": "string", "description": "Display name of sender" },
+        "senderPhoto": { "type": "string", "description": "Avatar photo of sender" },
+        "senderGamerTag": { "type": "string", "description": "GamerTag of sender" },
+        "text": { "type": "string", "description": "Message content" },
+        "createdAt": { "type": "string", "description": "ISO timestamp of message" }
+      },
+      "required": ["id", "groupId", "senderId", "senderName", "text", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Stores user profile and account details"
+    },
+    "/users/{userId}/friends/{friendId}": {
+      "schema": "Friend",
+      "description": "User friends list subcollection"
+    },
+    "/friendRequests/{requestId}": {
+      "schema": "FriendRequest",
+      "description": "Friend requests sent between players"
+    },
+    "/lobbyMessages/{messageId}": {
+      "schema": "LobbyMessage",
+      "description": "Real-time global players lounge chat messages"
+    },
+    "/directChats/{chatId}": {
+      "schema": "DirectChat",
+      "description": "Private 1-on-1 friend direct chat thread"
+    },
+    "/directChats/{chatId}/messages/{messageId}": {
+      "schema": "DirectChatMessage",
+      "description": "Messages inside a 1-on-1 direct chat thread"
+    },
+    "/groupChats/{groupId}": {
+      "schema": "GroupChat",
+      "description": "Multi-friend group chat room"
+    },
+    "/groupChats/{groupId}/messages/{messageId}": {
+      "schema": "GroupChatMessage",
+      "description": "Messages inside a group chat room"
+    },
+    "/games/{gameId}": {
+      "schema": "Game",
+      "description": "Stores S AI generated games playable by anyone"
+    },
+    "/games/{gameId}/comments/{commentId}": {
+      "schema": "Comment",
+      "description": "Comments and reviews on a specific S AI game"
+    },
+    "/users/{userId}/favorites/{gameId}": {
+      "schema": "Favorite",
+      "description": "User bookmarked games subcollection"
+    },
+    "/users/{userId}/history/{gameId}": {
+      "schema": "PlayHistory",
+      "description": "User play history and cloud save telemetry"
+    },
+    "/reviews/{reviewId}": {
+      "schema": "Review",
+      "description": "Global community reviews and star ratings on games"
+    }
+  }
+}

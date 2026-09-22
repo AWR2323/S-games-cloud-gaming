@@ -1,0 +1,275 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-outfit: 'Outfit', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+
+  body {
+    background-color: #05060f;
+    color: #f1f5f9;
+    font-family: var(--font-outfit);
+    font-feature-settings: "palt" 1;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+  }
+
+  /* Custom Sleek Cyber Scrollbars */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #070916;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1e2243;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #6366f1;
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+  }
+}
+
+/* Futuristic Cyber Mesh & Ambient Lights */
+.cyber-canvas-bg {
+  background-color: #04050d;
+  background-image: 
+    radial-gradient(at 10% 10%, rgba(99, 102, 241, 0.18) 0px, transparent 40%),
+    radial-gradient(at 90% 15%, rgba(6, 182, 212, 0.16) 0px, transparent 45%),
+    radial-gradient(at 50% 60%, rgba(139, 92, 246, 0.12) 0px, transparent 55%),
+    radial-gradient(at 80% 85%, rgba(236, 72, 153, 0.08) 0px, transparent 40%),
+    linear-gradient(to right, rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+}
+
+.cyber-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+.dots-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Luxury Cyber Glass Card */
+.cyber-glass-card {
+  background: linear-gradient(180deg, rgba(17, 22, 56, 0.75) 0%, rgba(10, 13, 38, 0.8) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 10px 35px -5px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.cyber-glass-card-interactive {
+  background: linear-gradient(180deg, rgba(17, 22, 56, 0.7) 0%, rgba(10, 13, 38, 0.8) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 35px -5px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cyber-glass-card-interactive:hover {
+  transform: translateY(-3px);
+  border-color: rgba(6, 182, 212, 0.4);
+  box-shadow: 0 15px 40px -5px rgba(6, 182, 212, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Glow Shadows */
+.glow-cyber {
+  box-shadow: 0 0 35px -5px rgba(139, 92, 246, 0.45);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 35px -5px rgba(6, 182, 212, 0.45);
+}
+
+.glow-amber {
+  box-shadow: 0 0 35px -5px rgba(245, 158, 11, 0.45);
+}
+
+.glow-emerald {
+  box-shadow: 0 0 35px -5px rgba(16, 185, 129, 0.45);
+}
+
+.neon-border-hover {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.neon-border-hover:hover {
+  border-color: rgba(6, 182, 212, 0.55);
+  box-shadow: 0 12px 35px -5px rgba(6, 182, 212, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transform: translateY(-3px);
+}
+
+.neon-border-violet {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.neon-border-violet:hover {
+  border-color: rgba(168, 85, 247, 0.55);
+  box-shadow: 0 12px 35px -5px rgba(168, 85, 247, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transform: translateY(-3px);
+}
+
+/* Ambient Pulse Orb */
+@keyframes floatOrb {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(25px, -20px) scale(1.08); }
+}
+.animate-float-orb {
+  animation: floatOrb 8s ease-in-out infinite alternate;
+}
+
+/* Text Shimmer Effect */
+@keyframes shimmerGlow {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.text-shimmer {
+  background: linear-gradient(90deg, #fff 0%, #a5b4fc 25%, #38bdf8 50%, #f472b6 75%, #fff 100%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  animation: shimmerGlow 6s linear infinite;
+}
+
+/* Pulsing radar dot */
+@keyframes radarPulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.4); opacity: 0; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.animate-radar {
+  animation: radarPulse 2s ease-out infinite;
+}
+
+/* Glassmorphism Surface Base */
+.glass-panel {
+  background: rgba(14, 18, 43, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-interactive {
+  background: rgba(14, 18, 43, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.25s ease;
+}
+
+.glass-panel-interactive:hover {
+  background: rgba(20, 26, 60, 0.85);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+/* Shake Animation for Wrong Passcode */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+/* Fade in for modal overlay */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Google Material Linear Progress Bar Animation */
+@keyframes indeterminate {
+  0% { transform: translateX(-100%) scaleX(0.2); }
+  50% { transform: translateX(20%) scaleX(0.6); }
+  100% { transform: translateX(200%) scaleX(0.2); }
+}
+
+.google-font {
+  font-family: 'Roboto', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Achievement Unlocked Slide-In Top Notification Animations */
+@keyframes achievementSlideIn {
+  0% {
+    transform: translateY(-130%) scale(0.92);
+    opacity: 0;
+    filter: blur(8px);
+  }
+  65% {
+    transform: translateY(8px) scale(1.02);
+    opacity: 1;
+    filter: blur(0px);
+  }
+  85% {
+    transform: translateY(-2px) scale(0.99);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+@keyframes achievementSlideOut {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    filter: blur(0px);
+  }
+  100% {
+    transform: translateY(-140%) scale(0.92);
+    opacity: 0;
+    filter: blur(6px);
+  }
+}
+
+@keyframes shineSweep {
+  0% {
+    transform: translateX(-150%) skewX(-25deg);
+  }
+  100% {
+    transform: translateX(300%) skewX(-25deg);
+  }
+}
+
+@keyframes auraPulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+.animate-achievement-in {
+  animation: achievementSlideIn 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.15) forwards;
+}
+
+.animate-achievement-out {
+  animation: achievementSlideOut 0.4s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+.animate-shine-sweep {
+  animation: shineSweep 2.2s infinite ease-in-out;
+}
+
+.animate-aura-pulse {
+  animation: auraPulse 2s infinite ease-in-out;
+}
+
+
+
